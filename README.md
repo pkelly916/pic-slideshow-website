@@ -1,8 +1,8 @@
 Notes
 =====
 
-website was redesigned 12/22/23
-website was updated 02/07/25
+- website was redesigned 12/22/23
+- website was updated 02/07/25
 
 # Info
 functionality now consists entirely of random images every click or reload
