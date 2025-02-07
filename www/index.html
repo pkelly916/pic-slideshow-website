@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>nonce</title>
+    <link rel="shortcut icon" type="image/x-icon" href="glider.ico"/>
+
+    <!-- css -->
+    <style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    #bg {
+        height: 100%; 
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    </style>
+</head>
+
+<!-- welcome -->
+<!-- this site is a randomized slideshow of my life -->
+<!-- I took most of these pictures; the ones I didn't are personally related -->
+<!-- comments, questions, concerns: pjk916 at protonmail dot com -->
+
+<script>
+    <!-- poc||gtfo 1:2 -->
+    function millis() {return Date.now();}
+    function flip_coin() {n=0; then=millis()+1; while(millis()<=then) {n=!n;} return n;}
+    function get_fair_bit() {while(1) {a=flip_coin(); if(a!=flip_coin()) {return(a);}}}
+    function get_random_byte() {n=0; bits=8; while(bits--) {n<<=1; n|=get_fair_bit();} return n;}
+
+    function randToAN(b) {
+        const alphanumeric = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        return alphanumeric[b % alphanumeric.length]
+    }
+
+    function getScriptName() {
+        var len = 5;
+
+        scriptname = "";
+        while(len--) {
+            scriptname += randToAN(get_random_byte());
+        }
+
+        return scriptname + ".sh";
+    }
+
+
+    function resetBackground() {
+        img_filename = fetch(getScriptName())
+            .then(response => {
+                return response.text();
+            })
+            .then(imageName => {
+                imgPath = "pics/" + imageName;
+                const bgelement = document.getElementById('bg');
+                bgelement.style.backgroundImage = `url(${imgPath})`;
+            })
+    }
+
+    document.addEventListener('click', function(event) {
+        resetBackground();
+    });
+
+    document.addEventListener("DOMContentLoaded", resetBackground);
+
+</script>
+
+<!-- html -->
+<body>
+    <div id="bg"></div>
+</body>
+</html>
+
