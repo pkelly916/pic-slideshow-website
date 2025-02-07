@@ -23,14 +23,18 @@ functionality now consists entirely of random images every click or reload
 - [ ] upload more pictures
 
 # Relevant files
+```
 /usr/share/nginx/www            - main website
 /usr/share/nginx/www/pics       - pictures directory
 /usr/share/nginx/script         - getrand.sh 
 /etc/nginx/nginx.conf           - defines relevant file paths
 /var/run/nginx/fcgiwrap.sock    - socket nginx uses
 /usr/lib/systemd/system/fcgiwrap.service    - configure for fcgiwrap
+```
 
 # Services
+```
 systemctl starts nginx.service
 systemctl starts fcgiwrap.service
+```
 
