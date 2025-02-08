@@ -7,10 +7,12 @@ Notes
 # Info
 functionality now consists entirely of random images every click or reload
 
-- files are read from pics/ through a one-line bash script
+- files are read from pics/ through a short bash script
+- supports delivering pictures to a desktop or mobile form factor
 - script returns a single random file from the directory
 - script is called by fcgiwrap
 - script is hardcoded, but called by file filter, allowing arbitrary file names
+- existence of a query parameter determines mobile/desktop pictures
 - nginx passes data to fcgi through fcgiwrap socket
 - socket is handled by systemd service
 - fcgi runs as http user, alongside nginx worker process
@@ -19,6 +21,7 @@ functionality now consists entirely of random images every click or reload
 - [X] random pictures as background
 - [X] randomized script name
 - [X] upload to github
+- [X] add mobile functionality
 - [ ] ssl 
 - [ ] upload more pictures
 
