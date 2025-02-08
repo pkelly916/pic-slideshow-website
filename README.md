@@ -28,7 +28,8 @@ functionality now consists entirely of random images every click or reload
 # Relevant files
 ```
 /usr/share/nginx/www            - main website
-/usr/share/nginx/www/pics       - pictures directory
+/usr/share/nginx/www/pics       - desktop pictures directory
+/usr/share/nginx/www/mobile     - mobile pictures directory
 /usr/share/nginx/script         - getrand.sh 
 /etc/nginx/nginx.conf           - defines relevant file paths
 /var/run/nginx/fcgiwrap.sock    - socket nginx uses
