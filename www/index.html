@@ -41,25 +41,33 @@
         return alphanumeric[b % alphanumeric.length]
     }
 
-    function getScriptName() {
+    function getScriptName(m) {
         var len = 5;
 
         scriptname = "";
         while(len--) {
             scriptname += randToAN(get_random_byte());
         }
+        scriptname += ".sh"
 
-        return scriptname + ".sh";
+        if (m) {
+            scriptname += "?" + randToAN(get_random_byte());
+        }
+
+        return scriptname;
+    }
+
+    function isMobile() {
+        return window.matchMedia("(max-width: 768px)").matches;
     }
 
 
     function resetBackground() {
-        img_filename = fetch(getScriptName())
+        img_filename = fetch(getScriptName(isMobile()))
             .then(response => {
                 return response.text();
             })
-            .then(imageName => {
-                imgPath = "pics/" + imageName;
+            .then(imgPath => {
                 const bgelement = document.getElementById('bg');
                 bgelement.style.backgroundImage = `url(${imgPath})`;
             })
